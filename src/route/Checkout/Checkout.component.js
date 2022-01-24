@@ -19,18 +19,18 @@ export class Checkout extends SourceCheckout {
     }
 
     renderProgressBar() {
-
-        console.clear()
+        const { checkoutStep } = this.props;
+        
         let progressSteps = []
         if (_.size(this.stepMap) > 0) {
             let step = 1
             _.forOwn(this.stepMap, (value, key,) => {
-                // console.log(value.areTotalsVisible)
+                
                 if (value.areTotalsVisible) {
                     progressSteps.push(
                         <>
-                            <ProgressLine />
-                            <ProgressCircle step={step} title={value.title.value} />
+                            <ProgressLine selected={checkoutStep} local={key}/>
+                            <ProgressCircle step={step} title={value.title.value} selected={checkoutStep} local={key}/>
                         </>
                     )
                     step++
@@ -38,6 +38,8 @@ export class Checkout extends SourceCheckout {
 
             })
         }
+
+        
 
         return (
             <ProgressContainer>

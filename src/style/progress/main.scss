@@ -44,8 +44,26 @@
 }
 
 .ProgressLine{
-    background-color: var(--primary-base-color);
+    background-color: var(--secondary-light-color);
     height: 5px;
     width: 100%;
     margin-bottom: 18px;
 }
+
+.ProgressLineAnim{
+    height: 5px;
+    margin-bottom: 18px;
+    animation-name: LineAnime;
+    animation-duration: 4s;
+    animation-fill-mode: forwards;
+    transition: width .2s;
+}
+
+@keyframes LineAnime {
+    from {background-color: var(--secondary-light-color);
+        width: 0%;
+    }
+    to {background-color: var(--primary-base-color);
+        width: 100%;
+    }
+  }

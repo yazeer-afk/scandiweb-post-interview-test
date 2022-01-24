@@ -3,10 +3,25 @@ import '../../style/progress/main.scss'
 
 export class ProgressLine extends PureComponent{
 
-    render(){
+    getStyle = (selected, local) => {
 
+        
+        if(local === selected){
+            return 'ProgressLineAnim'
+        } else {
+            return 'ProgressLine'
+        }
+        
+    }
+    
+    render(){
+        const {selected, local} = this.props
+        const render = selected === local
         return(
-            <div className='ProgressLine'></div>
+            <div className={render
+                ? 'ProgressLineAnim'
+                : 'ProgressLine'
+            }></div>
         )
     }
 }
