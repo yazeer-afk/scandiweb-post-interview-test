@@ -1,0 +1,51 @@
+
+.column{
+    display: flex;
+    flex-direction: column;
+    row-gap: 10px;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.justify-center{
+    justify-content: center;
+}
+
+.align-center{
+    align-items: center;
+}
+
+.ProgressContainer{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-between;
+    column-gap: 15px;
+    background-color: var(--secondary-base-color);
+    margin-bottom: 5px;
+    padding-bottom: 20px;
+    font-size: 16px;
+}
+
+.ProgressCircle{
+    background-color: var(--primary-base-color);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--secondary-light-color);
+    text-align: center;
+}
+
+.ProgressLine{
+    background-color: var(--primary-base-color);
+    height: 5px;
+    width: 100%;
+    margin-bottom: 18px;
+}
