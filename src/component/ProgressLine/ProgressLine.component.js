@@ -1,29 +1,35 @@
+import PropTypes from 'prop-types';
 import {PureComponent} from 'react'
 import '../../style/progress/main.scss'
 
 export class ProgressLine extends PureComponent{
 
-    getStyle = (selected, local) => {
+    constructor(props){
+        super(props)
 
-        
-        if(local === selected){
-            return 'ProgressLineAnim'
-        } else {
-            return 'ProgressLine'
+        this.state = {
+            clName: 'ProgressLine'
         }
-        
     }
     
     render(){
         const {selected, local} = this.props
-        const render = selected === local
+        const animrender = selected === local
+        if(animrender){
+            this.setState({
+                clName: 'ProgressLineAnim'
+            })
+        }
+        
         return(
-            <div className={render
-                ? 'ProgressLineAnim'
-                : 'ProgressLine'
-            }></div>
+            <div className={this.state.clName}></div>
         )
     }
+}
+
+ProgressLine.PropTypes = {
+    selected: PropTypes.string.isRequired,
+    local: PropTypes.string.isRequired
 }
 
 export default ProgressLine

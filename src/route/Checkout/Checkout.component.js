@@ -7,44 +7,37 @@ import _ from 'lodash'
 
 export class Checkout extends SourceCheckout {
 
-
-    renderStep() {
-        const { checkoutStep } = this.props;
-        const { render } = this.stepMap[checkoutStep];
-        if (render) {
-            return render();
-        }
-
-        return null;
-    }
-
     renderProgressBar() {
         const { checkoutStep } = this.props;
-        
+
         let progressSteps = []
         if (_.size(this.stepMap) > 0) {
             let step = 1
-            _.forOwn(this.stepMap, (value, key,) => {
-                
+            _.forOwn(this.stepMap, (value, key) => {
+                console.clear()
+
                 if (value.areTotalsVisible) {
                     progressSteps.push(
                         <>
-                            <ProgressLine selected={checkoutStep} local={key}/>
-                            <ProgressCircle step={step} title={value.title.value} selected={checkoutStep} local={key}/>
+                            <ProgressLine selected={checkoutStep} local={key} />
+                            <ProgressCircle step={step} title={value.title.value} selected={checkoutStep} local={key} />
                         </>
                     )
-                    step++
+                } else {
+                    progressSteps.push(
+                        <ProgressLine selected={checkoutStep} local={key} />
+                    )
                 }
+                step++
 
             })
         }
 
-        
+
 
         return (
             <ProgressContainer>
                 {progressSteps}
-                <ProgressLine />
             </ProgressContainer>
         )
     }
